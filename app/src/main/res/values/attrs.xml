@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--For custom Font-->
+    <declare-styleable name="montserrat">
+        <attr name="font_type" format="integer">
+            <enum name="font_light" value="0" />
+            <enum name="font_regular" value="1" />
+            <enum name="font_bold" value="2" />
+            <enum name="font_semi_bold" value="3" />
+            <enum name="font_thin" value="4" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="PinEntryEditText">
+        <attr name="pinAnimationType" format="enum">
+            <enum name="popIn" value="0" />
+            <enum name="fromBottom" value="1" />
+            <enum name="none" value="-1" />
+        </attr>
+        <attr name="pinCharacterMask" format="string" />
+        <attr name="pinRepeatedHint" format="string" />
+        <attr name="pinLineStroke" format="dimension" />
+        <attr name="pinLineStrokeSelected" format="dimension" />
+        <attr name="pinCharacterSpacing" format="dimension" />
+        <attr name="pinTextBottomPadding" format="dimension" />
+        <attr name="pinLineColors" format="color" />
+        <attr name="pinBackgroundDrawable" format="reference" />
+        <attr name="pinBackgroundIsSquare" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="WheelViewOld">
+        <attr name="wheelViewLineColor" format="color" />
+        <attr name="wheelViewOverflowTextColor" format="color" />
+        <attr name="wheelViewContentTextColor" format="color" />
+        <attr name="wheelViewTextSize" format="dimension" />
+        <attr name="wheelViewIsLoopEnabled" format="boolean" />
+        <attr name="wheelViewInitialPosition" format="integer" />
+        <attr name="wheelViewDrawItemCount" format="integer" />
+    </declare-styleable>
+
+    <!-- <declare-styleable name="CustomThemeTextInputLayout">
+         <attr name="customTextInputLayoeutStyle" format="reference"/>
+     </declare-styleable>-->
+
+</resources>

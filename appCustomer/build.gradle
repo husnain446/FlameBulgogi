@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+apply from: '../settings/flamebulgogi.gradle'
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+//    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+
+
+    defaultConfig {
+        applicationId "com.flame.bulgogi.cust"
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            proguardFile '../settings/proguard_files/proguard-support-v7-appcompat.pro'
+            proguardFile '../settings/proguard_files/proguard-support-v7-cardview.pro'
+            proguardFile '../settings/proguard_files/proguard-google-play-services.pro'
+            proguardFile '../settings/proguard_files/proguard-gson.pro'
+            proguardFile '../settings/proguard_files/proguard-square-okio.pro'
+            proguardFile '../settings/proguard_files/proguard-square-okhttp3.pro'
+            proguardFile '../settings/proguard_files/proguard-square-picasso.pro'
+            proguardFile '../settings/proguard_files/proguard-square-retrofit2.pro'
+            proguardFile '../settings/proguard_files/proguard-crashlytics.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+        }
+        debug {
+            proguardFile '../settings/proguard_files/proguard-support-v7-appcompat.pro'
+            proguardFile '../settings/proguard_files/proguard-support-v7-cardview.pro'
+            proguardFile '../settings/proguard_files/proguard-google-play-services.pro'
+            proguardFile '../settings/proguard_files/proguard-gson.pro'
+            proguardFile '../settings/proguard_files/proguard-square-okio.pro'
+            proguardFile '../settings/proguard_files/proguard-square-okhttp3.pro'
+            proguardFile '../settings/proguard_files/proguard-square-picasso.pro'
+            proguardFile '../settings/proguard_files/proguard-square-retrofit2.pro'
+            proguardFile '../settings/proguard_files/proguard-crashlytics.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+        }
+    }
+
+}
+
+dependencies {
+
+    def commonDependencies = rootProject.ext.commonDependencies
+    implementation commonDependencies.appCompat
+    implementation commonDependencies.designSupport
+    implementation commonDependencies.constraintlayout
+    implementation commonDependencies.butterKnife
+    annotationProcessor commonDependencies.butterKnifeCompiler
+    implementation commonDependencies.sdpandroid
+    implementation commonDependencies.easyPermissionLib
+    implementation commonDependencies.playServiceLocation
+
+    def retrofitDependencies = rootProject.ext.retrofitDependencies
+    implementation retrofitDependencies.retrofit
+    implementation retrofitDependencies.retrofitConverterGson
+    implementation retrofitDependencies.okHttp
+    implementation retrofitDependencies.okHttpUrlConnection
+    implementation retrofitDependencies.okHttpLogginInterceptor
+
+
+    def rxJavaDependencies = rootProject.ext.rxJavaDependencies
+    implementation rxJavaDependencies.rxjavaLib
+    implementation rxJavaDependencies.rxandroidLib
+    implementation rxJavaDependencies.rxjavaAdapterLib
+
+}

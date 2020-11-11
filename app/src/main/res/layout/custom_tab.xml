@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <com.flame.bulgogi.view.CustomTextView
+        android:id="@+id/textMenu"
+        style="@style/TextViewMini"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotationX="180"
+        android:textColor="@color/text_selector"
+        android:layout_marginBottom="@dimen/tiny_size"
+        android:lines="1"
+        android:maxLines="1"
+        android:text="@string/action_settings"/>
+
+    <ImageView
+        android:id="@+id/imageMenu"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_18sdp"
+        android:rotationX="180"
+        android:src="@mipmap/ic_launcher_round"/>
+
+
+</LinearLayout>
