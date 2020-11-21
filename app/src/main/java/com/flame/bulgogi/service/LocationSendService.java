@@ -52,7 +52,6 @@ public class LocationSendService extends IntentService {
         Log.d(TAG, "callLocationUpdateAPI() called");
         UserService userService = ApiFactory.getInstance(mContext).provideService(UserService.class);
 
-
         String latitude = UserPreference.getInstance(mContext).getLatitude();
         String longitude = UserPreference.getInstance(mContext).getLongitude();
         String tripId = UserPreference.getInstance(mContext).getTripId();

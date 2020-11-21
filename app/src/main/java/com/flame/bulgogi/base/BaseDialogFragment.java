@@ -26,8 +26,4 @@ public abstract class BaseDialogFragment extends DialogFragment {
 
     public abstract int getLayoutResource();
 
-    public void showToast(String message) {
-        ((BaseAppCompatActivity) getActivity()).showToast(message);
-    }
-
 }

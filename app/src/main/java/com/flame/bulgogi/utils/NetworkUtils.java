@@ -16,8 +16,6 @@ public class NetworkUtils {
         boolean isInternetAvailable = mConMgr.getActiveNetworkInfo() != null
                 && mConMgr.getActiveNetworkInfo().isAvailable()
                 && mConMgr.getActiveNetworkInfo().isConnected();
-       /* if (!isInternetAvailable)
-            Toast.makeText(ctx, ctx.getString(R.string.default_no_internet_connection_message), Toast.LENGTH_SHORT).show();*/
         return isInternetAvailable;
     }
 }

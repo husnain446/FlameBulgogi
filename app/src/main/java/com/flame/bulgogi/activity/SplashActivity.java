@@ -31,9 +31,6 @@ public class SplashActivity extends BaseAppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        getAppKeyHash();
-
         startTimer();
 
     }
@@ -49,40 +46,10 @@ public class SplashActivity extends BaseAppCompatActivity {
             @Override
             public void onFinish() {
                 //Check user is logged in or not
-                boolean boolLogin = UserPreference.getInstance(mBaseActivity).isUserLogin();
                 Intent intent = new Intent(mBaseActivity, BrowserActivity.class);
                 startActivity(intent);
-//                overridePendingTransition(R.anim.enter, R.anim.exit);
                 finish();
             }
         }.start();
-    }
-
-    /*
-    Generate facebook sh1 key
-     */
-    private void getAppKeyHash() {
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(
-                    getPackageName(), PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md;
-
-                md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                String something = new String(Base64.encode(md.digest(), 0));
-                System.out.println("HASH  " + something);
-
-
-            }
-        } catch (PackageManager.NameNotFoundException e1) {
-            // TODO Auto-generated catch block
-            LogUtils.LOGE("name not found", e1.toString());
-        } catch (NoSuchAlgorithmException e) {
-
-            LogUtils.LOGE("no such an algorithm", e.toString());
-        } catch (Exception e) {
-            LogUtils.LOGE("exception", e.toString());
-        }
     }
 }

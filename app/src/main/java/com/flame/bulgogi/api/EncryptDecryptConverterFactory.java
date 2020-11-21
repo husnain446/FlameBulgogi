@@ -19,9 +19,6 @@ public class EncryptDecryptConverterFactory extends Converter.Factory {
 
     private GsonConverterFactory factory;
 
-    public EncryptDecryptConverterFactory(GsonConverterFactory factory) {
-        this.factory = factory;
-    }
 
     @Override
     public Converter<ResponseBody, ?> responseBodyConverter(final Type type, Annotation[] annotations, Retrofit retrofit) {

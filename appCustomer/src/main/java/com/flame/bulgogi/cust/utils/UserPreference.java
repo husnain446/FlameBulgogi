@@ -70,20 +70,8 @@ public class UserPreference {
         return helperPreference.getStringValue(Constants.USER_PREFERENCES.TRIP_STATUS, "0");
     }
 
-    public String getDeviceToken() {
-        return helperPreference.getStringValue(Constants.USER_PREFERENCES.CONSTANT_FCM_TOKEN, "");
-    }
-
-    public void setDeviceToken(String deviceToken) {
-        helperPreference.setValue(Constants.USER_PREFERENCES.CONSTANT_FCM_TOKEN, deviceToken);
-    }
-
     public void setLoginUrl(String loginUrl) {
         helperPreference.setValue(Constants.USER_PREFERENCES.LOGIN_URL, loginUrl);
-    }
-
-    public String getLoginUrl() {
-        return helperPreference.getStringValue(Constants.USER_PREFERENCES.LOGIN_URL, "");
     }
 
     public void setTripId(String tripId) {
@@ -92,35 +80,6 @@ public class UserPreference {
 
     public String getTripId() {
         return helperPreference.getStringValue(Constants.USER_PREFERENCES.TRIP_ID, "0");
-    }
-
-
-    public void clear() {
-        helperPreference.setValue(Constants.USER_PREFERENCES.USER_PREFERENCE, "");
-        helperPreference.setValue(Constants.USER_PREFERENCES.USER_DATA, "");
-        setUserLogin(false);
-    }
-
-    public void clearUserDetails() {
-        helperPreference.setValue(Constants.USER_PREFERENCES.USER_DATA, "");
-        setUserLogin(false);
-    }
-
-    public void setUserData(LoginResponse.Data userData) {
-        Gson gson = new Gson();
-        Type type = new TypeToken<LoginResponse.Data>() {
-        }.getType();
-        String gsonModelToString = gson.toJson(userData, type);
-        helperPreference.setValue(Constants.USER_PREFERENCES.USER_DATA, gsonModelToString);
-    }
-
-    public LoginResponse.Data getUserData() {
-        LoginResponse.Data loData = null;
-        String gsonSwipeDetails = helperPreference.getStringValue(Constants.USER_PREFERENCES.USER_DATA, "");
-        if (!TextUtils.isEmpty(gsonSwipeDetails)) {
-            loData = new Gson().fromJson(gsonSwipeDetails, LoginResponse.Data.class);
-        }
-        return loData;
     }
 
 }

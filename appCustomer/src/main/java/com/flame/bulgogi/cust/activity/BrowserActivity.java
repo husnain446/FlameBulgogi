@@ -62,15 +62,6 @@ public class BrowserActivity extends BaseAppCompatActivity implements EasyPermis
 
     private String logoutUrl = "http://mymenuhub.com/driver/customer/account/logout";
     private String loginUrl = "http://mymenuhub.com/driver/customer/account/loginPost/referer";
-    /*Runnable mRunnableLocationUpdate = new Runnable() {
-        @Override
-        public void run() {
-            Intent intent = new Intent(mBaseAppCompatActivity, LocationUpdateService.class);
-            startService(intent);
-
-            mHandler.postDelayed(mRunnableLocationUpdate, Constants.LOCATION_UPDATE_INTERVAL);
-        }
-    };*/
 
     private ValueCallback<Uri[]> mFilePathCallback;
     private final static int FILECHOOSER_RESULTCODE = 1;
@@ -105,9 +96,6 @@ public class BrowserActivity extends BaseAppCompatActivity implements EasyPermis
     private void initComponents() {
 
         toolbar.setVisibility(View.GONE);
-      /*  setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);*/
 
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
@@ -226,33 +214,6 @@ public class BrowserActivity extends BaseAppCompatActivity implements EasyPermis
                 UserPreference.getInstance(mBaseActivity).setTripId("0");
                 UserPreference.getInstance(mBaseActivity).setTripStatus(Constants.USER_PREFERENCES.TRIP_STOP);
             }
-
-            /*int tripstatus = Integer.parseInt(UserPreference.getInstance(mBaseActivity).getTripStatus());
-
-            switch (tripstatus){
-                case 0:
-                    if(url.contains(Constants.URL.TRIP_START) && url.contains("/trip_id/")){
-                        String[] splitUrl = url.split("/");
-                        String tripId = splitUrl[splitUrl.length-1];
-                        Log.d(TAG, "splitUrl()  = [" + tripId + "]");
-                        UserPreference.getInstance(mBaseActivity).setTripId(tripId);
-                        UserPreference.getInstance(mBaseActivity).setTripStatus(Constants.USER_PREFERENCES.TRIP_START);
-
-                        startLocationUpdate();
-
-                        Intent intent = new Intent(mBaseActivity, LocationSendService.class);
-                        startService(intent);
-
-                    }
-                    break;
-
-                case 1:
-                    if(url.contains(Constants.URL.TRIP_STOP)){
-                        UserPreference.getInstance(mBaseActivity).setTripId("0");
-                        UserPreference.getInstance(mBaseActivity).setTripStatus(Constants.USER_PREFERENCES.TRIP_STOP);
-                    }
-                    break;
-            }*/
         }
 
     }
@@ -296,34 +257,6 @@ public class BrowserActivity extends BaseAppCompatActivity implements EasyPermis
     }
 
     private void loadTab(int tab) {
-        /*switch (tab){
-            case Constants.TAB.BIDS:
-                mWebView.loadUrl(Constants.URL.BIDS);
-                break;
-
-            case Constants.TAB.MY_ORDERS:
-                mWebView.loadUrl(Constants.URL.MY_ORDERS);
-                break;
-
-            case Constants.TAB.EARNINGS:
-                mWebView.loadUrl(Constants.URL.EARNINGS);
-                break;
-
-            case Constants.TAB.ACCOUNT:
-                if(UserPreference.getInstance(mBaseActivity).isUserLogin()){
-                    mWebView.loadUrl(UserPreference.getInstance(mBaseActivity).getLoginUrl());
-                }
-                else{
-                    mWebView.loadUrl(Constants.URL.ACCOUNT);
-                }
-
-                break;
-
-            case Constants.TAB.NOTIFICATION:
-                mWebView.loadUrl(Constants.URL.NOTIFICATION);
-                break;
-
-        }*/
     }
 
     @Override
@@ -391,11 +324,7 @@ public class BrowserActivity extends BaseAppCompatActivity implements EasyPermis
      */
     public void startLocationUpdate() {
         Log.d(TAG, "startLocationUpdate() called");
-       /* if (mHandler == null) {
-            mHandler = new Handler();
-            mHandler.post(mRunnableLocationUpdate);
-        }
-*/
+
         if (UserPreference.getInstance(mBaseActivity).getTripStatus().equals("1")) {
             if (!isMyServiceRunning(LocationUpdateService.class)) {
                 Intent intent = new Intent(mBaseAppCompatActivity, LocationUpdateService.class);

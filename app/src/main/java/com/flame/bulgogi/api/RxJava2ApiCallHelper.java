@@ -34,11 +34,9 @@ public final class RxJava2ApiCallHelper {
                     @Override
                     public void accept(@NonNull Throwable throwable) throws Exception {
                         if (throwable != null) {
-//                            rxJava2ApiCallback.onFailed(new Exception("Refresh in progress…"));
                             rxJava2ApiCallback.onFailed(throwable);
                         } else {
                             rxJava2ApiCallback.onFailed(new Exception("Something went wrong"));
-//                            rxJava2ApiCallback.onFailed(new Exception("Refresh in progress…"));
                         }
                     }
                 });

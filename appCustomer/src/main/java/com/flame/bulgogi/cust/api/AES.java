@@ -65,32 +65,6 @@ public class AES {
     }
 
     /**
-     * print byte array value
-     *
-     * @param data
-     */
-    private void printByte(byte[] data) {
-        StringBuffer strByte = new StringBuffer();
-        StringBuffer strNoByte = new StringBuffer();
-        for (int i = 0; i < data.length; i++) {
-            strByte.append((char) data[i] + "|");
-            strNoByte.append(data[i] + "|");
-        }
-        Log.e(TAG, "strByte: " + strByte.toString());
-        Log.e(TAG, "strNoByte: " + strNoByte.toString());
-    }
-
-    public int doDecrypt(int input) {
-        int result = 0;
-        try {
-            result = Integer.parseInt(doDecrypt(input + ""));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    /**
      * Decrypt Encrypted text
      *
      * @param input

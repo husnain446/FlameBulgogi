@@ -68,15 +68,7 @@ public class BrowserActivity extends BaseAppCompatActivity implements EasyPermis
 
     private String logoutUrl = "http://mymenuhub.com/driver/customer/account/logout";
     private String loginUrl = "http://mymenuhub.com/driver/customer/account/loginPost/referer";
-    /*Runnable mRunnableLocationUpdate = new Runnable() {
-        @Override
-        public void run() {
-            Intent intent = new Intent(mBaseAppCompatActivity, LocationUpdateService.class);
-            startService(intent);
 
-            mHandler.postDelayed(mRunnableLocationUpdate, Constants.LOCATION_UPDATE_INTERVAL);
-        }
-    };*/
 
     private ValueCallback<Uri[]> mFilePathCallback;
     private final static int FILECHOOSER_RESULTCODE=1;
@@ -103,7 +95,6 @@ public class BrowserActivity extends BaseAppCompatActivity implements EasyPermis
         setupTabs();
 
         if(!UserPreference.getInstance(mBaseActivity).isUserLogin()){
-//            tabLayout.setVisibility(View.GONE);
             tabLayout.getTabAt(Constants.TAB.ACCOUNT).select();
         }
     }
@@ -133,7 +124,6 @@ public class BrowserActivity extends BaseAppCompatActivity implements EasyPermis
 
                 if(url.startsWith(logoutUrl)){
                     UserPreference.getInstance(mBaseActivity).setUserLogin(false);
-//                    tabLayout.setVisibility(View.GONE);
                 }
                 else if(url.startsWith(loginUrl)){
                     UserPreference.getInstance(mBaseActivity).setLoginUrl(url);
@@ -148,9 +138,7 @@ public class BrowserActivity extends BaseAppCompatActivity implements EasyPermis
 
             public void onPageFinished(WebView view, String url) {
                 Log.d(TAG, "onPageFinished() = [" + url + "]");
-
                 checkTripUrl(url);
-
                 hideProgressDialog();
             }
 
@@ -202,11 +190,9 @@ public class BrowserActivity extends BaseAppCompatActivity implements EasyPermis
     }
 
     private void checkTripUrl(String url) {
-
         String afterLogin = "http://mymenuhub.com/driver/customer/account/index";
         if(url.startsWith(afterLogin)){
             UserPreference.getInstance(mBaseActivity).setUserLogin(true);
-//            tabLayout.setVisibility(View.VISIBLE);
         }
         else{
             int tripstatus = Integer.parseInt(UserPreference.getInstance(mBaseActivity).getTripStatus());
@@ -372,12 +358,6 @@ public class BrowserActivity extends BaseAppCompatActivity implements EasyPermis
     Start location runnable and fetch location as set interval and upload in server if user is logged in
      */
     public void startLocationUpdate() {
-        Log.d(TAG, "startLocationUpdate() called");
-       /* if (mHandler == null) {
-            mHandler = new Handler();
-            mHandler.post(mRunnableLocationUpdate);
-        }
-*/
        if(!isMyServiceRunning(LocationUpdateService.class)){
            Intent intent = new Intent(mBaseAppCompatActivity, LocationUpdateService.class);
            startService(intent);

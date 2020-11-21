@@ -24,14 +24,9 @@ public class BaseApplication extends Application {
         super.onCreate();
 
         //TODO: Set false for getting crash Report in release build
-        // Fabric crashalytics
-        if (BuildConfig.DEBUG) {
-            //Fabric.with(this, new Crashlytics());
-        }
 
         // Initialize application instance
         mInstance = this;
-
         // Initialize initializeOkHttpClient
         mOkHttpClient = OkClientFactory.provideOkHttpClient(this);
 
